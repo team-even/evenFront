@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NaverMap, useNavermaps, Marker } from 'react-naver-maps';
+import SimpleLocationInfo from './SimpleLocationInfo';
 
 // 부경대학교 근처 임의의 좌표들
 const randomLocations = [
@@ -13,7 +14,8 @@ const randomLocations = [
 const MyMap = () => {
     const navermaps = useNavermaps();
     const [currentPosition, setCurrentPosition] = useState(null);
-    const [zoomLevel, setZoomLevel] = useState(15); // 줌 레벨 상태 추가
+    const [zoomLevel, setZoomLevel] = useState(15); 
+    const [selectedPlace, setSelectedPlace] = useState(null);
 
     useEffect(() => {
         if (navigator.geolocation) {
@@ -57,52 +59,63 @@ const MyMap = () => {
         console.log(`Zoom Level: ${zoom}`); 
     };
 
-    return (
-        <NaverMap
-            center={currentPosition || new navermaps.LatLng(35.1340, 129.0580)} // 부경대 근처 기본 위치
-            zoom={zoomLevel} // 현재 줌 레벨 상태로 설정
-            onClick={handleMapClick}
-            onZoomChanged={handleZoomChange} // 줌 레벨 변경 시 호출
-            style={{ width: '100%', height: '100vh' }}
-        >
-            {currentPosition && (
-                <Marker
-                    position={currentPosition}
-                    icon={{
-                        content: `
-                            <div style="position: relative; display: flex; flex-direction: column; align-items: center;">
-                                <div style="background-color: #FF5F5F; border-radius: 8px; padding: 8px 12px; color: white; font-weight: bold; font-size: 14px; line-height: 19px; text-align: center;">
-                                    현재 위치
-                                </div>
-                                <div style="width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid #FF5F5F; margin-top: -2px;"></div>
-                            </div>
-                        `,
-                        anchor: { x: 12, y: 12 },
-                    }}
-                    title="현재 위치"
-                />
-            )}
+    const handleMarkerPress = (place) => {
+      setSelectedPlace(place); // 클릭한 장소 정보 설정
+    };
 
-            {/* 임의의 마커들 추가 */}
-            {randomLocations.map((location, index) => (
-                <Marker
-                    key={index}
-                    position={new navermaps.LatLng(location.lat, location.lng)}
-                    icon={{
-                        content: `
-                            <div style="position: relative; display: flex; flex-direction: column; align-items: center;">
-                                <div style="background-color: #FF5F5F; border-radius: 8px; padding: 8px 12px; color: white; font-weight: bold; font-size: 14px; line-height: 19px; text-align: center;">
-                                    임의의 마커 ${index + 1}
-                                </div>
-                                <div style="width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid #FF5F5F; margin-top: -2px;"></div>
-                            </div>
-                        `,
-                        anchor: { x: 12, y: 12 },
-                    }}
-                    title={`임의의 마커 ${index + 1}`}
-                />
-            ))}
-        </NaverMap>
+    return (
+        <>
+          <NaverMap
+              center={currentPosition || new navermaps.LatLng(35.1340, 129.0580)} // 부경대 근처 기본 위치
+              zoom={zoomLevel} // 현재 줌 레벨 상태로 설정
+              onClick={handleMapClick}
+              onZoomChanged={handleZoomChange} // 줌 레벨 변경 시 호출
+              style={{ width: '100%', height: '100vh' }}
+          >
+              {currentPosition && (
+                  <Marker
+                      onClick={() => handleMarkerPress(currentPosition)}
+                      position={currentPosition}
+                      icon={{
+                          content: `
+                              <div style="position: relative; display: flex; flex-direction: column; align-items: center;">
+                                  <div style="background-color: #FF5F5F; border-radius: 8px; padding: 8px 12px; color: white; font-weight: bold; font-size: 14px; line-height: 19px; text-align: center;">
+                                      현재 위치
+                                  </div>
+                                  <div style="width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid #FF5F5F; margin-top: -2px;"></div>
+                              </div>
+                          `,
+                          anchor: { x: 12, y: 12 },
+                      }}
+                      title="현재 위치"
+                  />
+              )}
+
+              {randomLocations.map((location, index) => (
+                  <Marker
+                      onClick={() => handleMarkerPress(location)} // 각 임의 마커 클릭 핸들러
+                      key={index}
+                      position={new navermaps.LatLng(location.lat, location.lng)}
+                      icon={{
+                          content: `
+                              <div style="position: relative; display: flex; flex-direction: column; align-items: center;">
+                                  <div style="background-color: #FF5F5F; border-radius: 8px; padding: 8px 12px; color: white; font-weight: bold; font-size: 14px; line-height: 19px; text-align: center;">
+                                      임의의 마커 ${index + 1}
+                                  </div>
+                                  <div style="width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid #FF5F5F; margin-top: -2px;"></div>
+                              </div>
+                          `,
+                          anchor: { x: 12, y: 12 },
+                      }}
+                      title={`임의의 마커 ${index + 1}`}
+                  />
+              ))}
+          </NaverMap>
+
+          {selectedPlace && (
+                <SimpleLocationInfo place={selectedPlace} onClose={() => setSelectedPlace(null)} />
+            )}
+        </>
     );
 };
 
