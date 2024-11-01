@@ -8,7 +8,7 @@ import PurchaseHistory from "./pages/PurchaseHistory";
 import Ranking from "./components/Ranking";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-
+import MarketList from "./pages/MarketList";
 export default function Router() {
   return (
     <Routes>
@@ -21,6 +21,7 @@ export default function Router() {
       <Route path="/ranking" element={<Ranking />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
+      <Route path="/market-list" element={<MarketList />} />
     </Routes>
   );
 }
