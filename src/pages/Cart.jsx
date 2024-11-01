@@ -24,7 +24,7 @@ const Cart = () => {
   return (
     <div style={{ margin: "70px 0" }}>
       <BackBtn onClick={handleBack} />
-      <h1 style={{marginLeft:'20px', marginBottom:'20px'}}>구매 목록</h1>
+      <h2 style={{marginLeft:'20px', marginBottom:'20px'}}>구매 목록</h2>
       {cartItems.length === 0 ? (
         <p>비어 있습니다.</p>
       ) : (

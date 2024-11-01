@@ -1,50 +1,84 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import { useNavigate, useNavigation } from "react-router-dom";
+import styled from "styled-components";
 
 const Container = styled.div`
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 170px;
-    background-color: white;
-    padding: 16px;
-    margin-bottom: 30px;
-    transition: transform 0.3s ease;
-    z-index: 1000;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 170px;
+  background-color: white;
+  margin-bottom: 30px;
+  transition: transform 0.3s ease;
+  z-index: 1000;
 `;
 
-const Header = styled.h2`
-    font-size: 18px;
-    margin-bottom: 8px;
+const Section = styled.div`
+  margin: 10px 0;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 128px;
+  background-color: #ffffff;
 `;
 
-const Info = styled.p`
-    margin-bottom: 8px;
-    font-size: 16px;
+const Description = styled.div`
+  flex: 1;
+  text-align: start;
 `;
 
-const CloseButton = styled.button`
-    padding: 8px 12px;
-    background-color: #FF5F5F;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+const MarketName = styled.h4`
+  margin: 0;
+  font-size: 20px;
+`;
+
+const Tag = styled.span`
+  background-color: #e9adc8;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin-left: 5px;
+`;
+
+const MiddleDiv = styled.div`
+  margin: 3px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
+const Distance = styled.h4``;
+
+const MarketImg = styled.img`
+  width: 80px;
+  height: 80px;
+  background-color: #eee; /* Placeholder for the image */
+  border-radius: 5px;
 `;
 
 const SimpleLocationInfo = ({ place, onClose }) => {
-    return (
-        <Container>
-          <>
-            <Header>선택된 장소</Header>
-            <Info>위도: {place.lat}</Info>
-            <Info>경도: {place.lng}</Info>
-            <CloseButton onClick={onClose}>닫기</CloseButton>
-          </>
-        </Container>
-    );
+  const navigate = useNavigate();
+  return (
+    <Container onClick={() => navigate(`/detail/1s`)}>
+      <Section>
+        <Description>
+          <MarketName>{place.name}</MarketName>
+          <MiddleDiv>
+            다회용기
+            <Tag>{place.tag}</Tag>
+          </MiddleDiv>
+          <Distance>5m</Distance> {/* This can also be dynamic */}
+        </Description>
+        <MarketImg
+          src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA1MDhfNDAg%2FMDAxNzE1MTU4NzY2Nzk0.HMLfO3hHbG4b8-BkV9VmnCZqHbAm88Cxx3IzL84Xt9Yg.J3ak6ooe1cssxvT4W-TyWH_QMRq3uri8duCUnN5HbQQg.JPEG%2FIMG_6701.JPG&type=sc960_832"
+          alt="횟집"
+        />
+      </Section>
+    </Container>
+  );
 };
 
 export default SimpleLocationInfo;

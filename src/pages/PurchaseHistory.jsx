@@ -20,34 +20,50 @@ const purchaseHistoryData = [
   {
     storeImage:
       "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231102_102%2F1698913021884pJUJO_JPEG%2F20230815_232836.jpg",
-    storeName: "아빠횟집",
-    menuName: "족발보쌈세트",
-    price: 25000,
-    tag: "전통 시장",
-  },
-  {
-    storeImage:
-      "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231102_102%2F1698913021884pJUJO_JPEG%2F20230815_232836.jpg",
-    storeName: "아빠횟집",
-    menuName: "콜라",
-    price: 2000,
+    storeName: "부산횟집",
+    menuName: "광어회 외 1",
+    price: 30000,
     tag: "부산 로컬 음식",
   },
   {
     storeImage:
-      "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231102_102%2F1698913021884pJUJO_JPEG%2F20230815_232836.jpg",
-    storeName: "엄마횟집",
-    menuName: "회덮밥",
-    price: 12000,
+      "https://www.foodjang.com/New/04/221500311/221500311_b_1.jpg",
+    storeName: "부산어묵",
+    menuName: "부산어묵 외 1",
+    price: 5000,
+    tag: "부산 로컬 음식",
+  },
+  {
+    storeImage:
+      "https://ai.esmplus.com/foodjang01/images/221700145_b_1.jpg",
+    storeName: "부산갈비",
+    menuName: "갈비찜",
+    price: 40000,
     tag: "전통 시장",
   },
   {
     storeImage:
-      "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231102_102%2F1698913021884pJUJO_JPEG%2F20230815_232836.jpg",
-    storeName: "엄마횟집",
-    menuName: "회덮밥",
-    price: 12000,
+      "https://recipe1.ezmember.co.kr/cache/recipe/2021/11/14/80d48ffe97b96ff4d2f8b0602f92639d1.jpg",
+    storeName: "부산국수파전",
+    menuName: "해물파전 외 3",
+    price: 15000,
     tag: "전통 시장",
+  },
+  {
+    storeImage:
+      "https://fs.arumnet.com/image/N2780HKSSH//item/old/oldimage/030065028415_400.jpg",
+    storeName: "해운대식당",
+    menuName: "물회",
+    price: 22000,
+    tag: "부산 해산물",
+  },
+  {
+    storeImage:
+      "https://www.onlmenu.com/data/file/sb/3717332851_acdkyWIJ_90514129edd490464b8d3762cf9b0f149b220cf5.jpg",
+    storeName: "자갈치횟집",
+    menuName: "모듬해산물 외 1",
+    price: 45000,
+    tag: "부산 해산물",
   },
 ];
 
@@ -89,7 +105,7 @@ function PurchaseHistory() {
       <Title>구매 현황</Title>
       {orders.map((order) => (
         <InfoSection key={order.orderId}>
-          <div style={{alignItems:'center'}}>
+          <div style={{ alignItems: "center" }}>
             <h1>{order.storeName}</h1>
             <CategoryTag tag={"부산 로컬 음식"} size="mini" />
           </div>

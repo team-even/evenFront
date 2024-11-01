@@ -16,49 +16,48 @@ const dummy = {
   order_count: 488,
   container_tags: ["다회용기 제공", "다회용기 지참"],
 };
-
 const menuItems = [
   {
     id: 1,
     name: "회덮밥",
     price: 12000,
     image:
-      "https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA4MjdfMjA3%2FMDAxNzI0NzY4NzY1Mzg5.YeQFEUXF0OcfgF81j34Fzbg-UfsWkWmzYWmeUQBsOzsg.fi_c71fDT-FFKVfyj9rxF4xFxOyvaHFp5r3JItkzjYYg.JPEG%2FA9FAB52F-B96C-40FC-9978-584AA5795F9D.jpeg%3Ftype%3Dw1500_60_sharpen",
+      "https://recipe1.ezmember.co.kr/cache/recipe/2018/01/05/e265c10cb43c35e0fa9b9b332a12905a1.jpg", 
   },
   {
     id: 2,
-    name: "갈비찜",
-    price: 20000,
+    name: "광어회",
+    price: 25000,
     image:
-      "https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA4MjdfMjA3%2FMDAxNzI0NzY4NzY1Mzg5.YeQFEUXF0OcfgF81j34Fzbg-UfsWkWmzYWmeUQBsOzsg.fi_c71fDT-FFKVfyj9rxF4xFxOyvaHFp5r3JItkzjYYg.JPEG%2FA9FAB52F-B96C-40FC-9978-584AA5795F9D.jpeg%3Ftype%3Dw1500_60_sharpen",
+      "https://mblogthumb-phinf.pstatic.net/MjAxODA0MjFfMzYg/MDAxNTI0MzA2MTc2NzY4.ZIORnXzNIkeNd5fKPKmKMJWXfGOi0vuNTQBb2W5mBqog.gHq8DGQtQWRkPej4KsAXxepkSHYdlnQbX8ZsYfiaKxkg.JPEG.slds2/광어회4.jpg?type=w800",
   },
   {
     id: 3,
-    name: "김치찌개",
-    price: 8000,
+    name: "연어회",
+    price: 28000,
     image:
-      "https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA4MjdfMjA3%2FMDAxNzI0NzY4NzY1Mzg5.YeQFEUXF0OcfgF81j34Fzbg-UfsWkWmzYWmeUQBsOzsg.fi_c71fDT-FFKVfyj9rxF4xFxOyvaHFp5r3JItkzjYYg.JPEG%2FA9FAB52F-B96C-40FC-9978-584AA5795F9D.jpeg%3Ftype%3Dw1500_60_sharpen",
+      "https://thingotr4652.cdn-nhncommerce.com/data/editor/goods/201005/3baf89d87e6556b4cbfc0adb400a5f68_145416.jpg",
   },
   {
     id: 4,
-    name: "비빔밥",
-    price: 10000,
+    name: "새우튀김",
+    price: 15000,
     image:
-      "https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA4MjdfMjA3%2FMDAxNzI0NzY4NzY1Mzg5.YeQFEUXF0OcfgF81j34Fzbg-UfsWkWmzYWmeUQBsOzsg.fi_c71fDT-FFKVfyj9rxF4xFxOyvaHFp5r3JItkzjYYg.JPEG%2FA9FAB52F-B96C-40FC-9978-584AA5795F9D.jpeg%3Ftype%3Dw1500_60_sharpen",
+      "https://lh6.googleusercontent.com/proxy/mx8cm1OQMjBkSL1bjRQTO4HUsJ1YuEOUMrt9awaV089ZRqloUDnrHEMvNJh2umxJ31EaQLvDjA-4yCRUiZfn3KJh1x3oNmkzvv3m", // 새우튀김 이미지 URL
   },
   {
     id: 5,
-    name: "낙지볶음",
-    price: 15000,
+    name: "전복죽",
+    price: 18000,
     image:
-      "https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA4MjdfMjA3%2FMDAxNzI0NzY4NzY1Mzg5.YeQFEUXF0OcfgF81j34Fzbg-UfsWkWmzYWmeUQBsOzsg.fi_c71fDT-FFKVfyj9rxF4xFxOyvaHFp5r3JItkzjYYg.JPEG%2FA9FAB52F-B96C-40FC-9978-584AA5795F9D.jpeg%3Ftype%3Dw1500_60_sharpen",
+      "https://recipe1.ezmember.co.kr/cache/recipe/2022/06/29/f3a9b76d8b39ecdc73e746824e05c96c1.jpg", // 전복죽 이미지 URL
   },
 ];
 
 const Detail = () => {
   const { id } = useParams();
   const [activeTab, setActiveTab] = useState("menu");
-  const { addToCart } = useCartStore(); 
+  const { addToCart } = useCartStore();
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
