@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { CategoryTag, MiniTag } from "../components/Tag";
-import { FaRegStar } from "react-icons/fa";
+import { FaRegStar, FaStar } from "react-icons/fa";
 import { MenuItem } from "../components/MenuItem";
 import { BottomBtn } from "../components/BottomBtn";
 import { BackBtn } from "../components/BackBtn";
@@ -22,7 +22,7 @@ const menuItems = [
     name: "회덮밥",
     price: 12000,
     image:
-      "https://recipe1.ezmember.co.kr/cache/recipe/2018/01/05/e265c10cb43c35e0fa9b9b332a12905a1.jpg", 
+      "https://recipe1.ezmember.co.kr/cache/recipe/2018/01/05/e265c10cb43c35e0fa9b9b332a12905a1.jpg",
   },
   {
     id: 2,
@@ -59,9 +59,18 @@ const Detail = () => {
   const [activeTab, setActiveTab] = useState("menu");
   const { addToCart } = useCartStore();
 
+  // 즐겨찾기 상태를 관리하기 위한 상태 변수 추가
+  const [isFavorited, setIsFavorited] = useState(false);
+
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
+
+  // 즐겨찾기 토글 핸들러
+  const toggleFavorite = () => {
+    setIsFavorited((prev) => !prev);
+  };
+
   return (
     <div>
       <BackBtn />
@@ -70,10 +79,19 @@ const Detail = () => {
         <div>
           <h1>{dummy.title}</h1>
           <CategoryTag tag={dummy.tag} />
-          <FaRegStar style={{ marginLeft: "auto" }} />
+          {isFavorited ? (
+            <FaStar
+              onClick={toggleFavorite}
+              style={{ color: "gold", cursor: "pointer", marginLeft:'auto' }}
+            />
+          ) : (
+            <FaRegStar onClick={toggleFavorite} style={{ cursor: "pointer", marginLeft:'auto'}} />
+          )}
         </div>
         <div>
-          <Count>{`즐겨찾기 ${dummy.favorite_count}개  |주문 ${dummy.order_count}회`}</Count>
+          <Count>{`즐겨찾기 ${
+            dummy.favorite_count + (isFavorited ? 1 : 0)
+          }개  |주문 ${dummy.order_count}회`}</Count>
         </div>
         <div>
           {dummy.container_tags.map((item, index) => (

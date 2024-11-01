@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, useNavigation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -13,6 +13,9 @@ const Container = styled.div`
   margin-bottom: 30px;
   transition: transform 0.3s ease;
   z-index: 1000;
+  box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 `;
 
 const Section = styled.div`
@@ -53,10 +56,10 @@ const MiddleDiv = styled.div`
 const Distance = styled.h4``;
 
 const MarketImg = styled.img`
-  width: 80px;
-  height: 80px;
-  background-color: #eee; /* Placeholder for the image */
-  border-radius: 5px;
+  width: 100px;
+  height: 100px;
+  background-color: #eee;
+  border-radius: 10px;
 `;
 
 const SimpleLocationInfo = ({ place, onClose }) => {
