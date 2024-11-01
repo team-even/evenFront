@@ -52,49 +52,58 @@ const purchaseHistoryData = [
 ];
 
 function PurchaseHistory() {
-  const { menu, status } = dummy;
   const [orders, setOrders] = useState([]);
 
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const response = await fetch('https://692d-14-44-120-102.ngrok-free.app/orders?memberId=1', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'ngrok-skip-browser-warning': '69420',
-        },
-        mode: 'cors'
-      });
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://692d-14-44-120-102.ngrok-free.app/orders?memberId=1",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "ngrok-skip-browser-warning": "69420",
+            },
+            mode: "cors",
+          }
+        );
 
-      if (response.ok) {
-        const data = await response.json();
-        console.log('서버로부터 받은 데이터:', data); 
-      } else {
-        throw new Error('네트워크 응답이 올바르지 않습니다.');
+        if (response.ok) {
+          const data = await response.json();
+          console.log("서버로부터 받은 데이터:", data);
+          setOrders(data["result:"]); // 응답 데이터에서 'result:' 키를 사용하여 상태 업데이트
+        } else {
+          throw new Error("네트워크 응답이 올바르지 않습니다.");
+        }
+      } catch (error) {
+        console.error("데이터 요청 중 오류 발생:", error);
       }
-    } catch (error) {
-      console.error('데이터 요청 중 오류 발생:', error); 
-    }
-  };
+    };
 
-  fetchData();
-}, []); 
+    fetchData();
+  }, []);
 
   return (
     <Container>
       <Title>구매 현황</Title>
-      <InfoSection>
-        <div>
-          <h1>{dummy.title}</h1>
-          <CategoryTag tag={dummy.tag} />
-        </div>
-        <p>
-          {menu.length > 0 && menu[0]}
-          {menu.length > 1 && ` 외 ${menu.length - 1}개`}{" "}
-        </p>
-        <ProgressBar currentStatus={status} /> {/* ProgressBar 사용 */}
-      </InfoSection>
+      {orders.map((order) => (
+        <InfoSection key={order.orderId}>
+          <div style={{alignItems:'center'}}>
+            <h1>{order.storeName}</h1>
+            <CategoryTag tag={"부산 로컬 음식"} size="mini" />
+          </div>
+          <p>
+            {order.foodInfoHistoryList.map((food, index) => (
+              <span key={food.foodId}>
+                {food.foodName}({food.price}원)
+                {index < order.foodInfoHistoryList.length - 1 && ", "}
+              </span>
+            ))}
+          </p>
+          <ProgressBar currentStatus={order.orderCategory} />
+        </InfoSection>
+      ))}
       <Title>구매 기록</Title>
       <PurchaseList>
         {purchaseHistoryData.map((item, index) => (
