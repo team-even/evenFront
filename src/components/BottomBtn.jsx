@@ -2,15 +2,16 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-export const BottomBtn = ({ text, id }) => {
+export const BottomBtn = ({ text, id, cartItemCount }) => {
   const navigate = useNavigate();
+
   return (
     <ButtonContainer
       onClick={() => {
         navigate(`/detail/${id}/payment`);
       }}
     >
-      {text}
+      {cartItemCount > 0 ? `${cartItemCount}개 담음` : text}
     </ButtonContainer>
   );
 };

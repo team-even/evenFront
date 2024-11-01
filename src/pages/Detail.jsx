@@ -57,9 +57,22 @@ const menuItems = [
 const Detail = () => {
   const { id } = useParams();
   const [activeTab, setActiveTab] = useState("menu");
+  const [cartItems, setCartItems] = useState([]);
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
+  };
+
+  const addToCart = (item) => {
+    setCartItems((prevItems) => {
+      if (prevItems.find((cartItem) => cartItem.id === item.id)) {
+        // 이미 장바구니에 있는 경우 제거
+        return prevItems.filter((cartItem) => cartItem.id !== item.id);
+      } else {
+        // 장바구니에 없는 경우 추가
+        return [...prevItems, item];
+      }
+    });
   };
 
   return (
@@ -83,7 +96,7 @@ const Detail = () => {
       </InfoSection>
 
       <TabBar activeTab={activeTab} handleTabClick={handleTabClick} />
-      {renderTabContent(activeTab)}
+      {renderTabContent(activeTab, addToCart)}
       <BottomBtn id={id} text="담기" />
     </div>
   );
@@ -108,33 +121,36 @@ const TabBar = ({ activeTab, handleTabClick }) => {
   );
 };
 
-const renderTabContent = (activeTab) => {
+const renderTabContent = (activeTab, addToCart) => {
   switch (activeTab) {
     case "menu":
-      return <MenuComponent />;
+      return <MenuComponent addToCart={addToCart} />;
     case "info":
-      return <div>정보 내용</div>; // 정보 관련 콘텐츠
+      return <div>정보 내용</div>;
     default:
       return null;
   }
 };
 
-const MenuComponent = () => {
+const MenuComponent = ({ addToCart }) => {
   return (
     <MenuContainer>
       {menuItems.map((item) => (
         <MenuItem
           key={item.id}
+          item={item}
           id={item.id}
           name={item.name}
           price={item.price}
           image={item.image}
+          addToCart={() => addToCart(item)} // addToCart 함수 호출
         />
       ))}
     </MenuContainer>
   );
 };
 
+// 스타일 컴포넌트들
 const TopImg = styled.div`
   width: 100%;
   height: 230px;
@@ -192,6 +208,7 @@ const MenuContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
+  margin-bottom: 70px;
 `;
 
 export default Detail;
