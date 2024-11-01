@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { CategoryTag } from "../components/Tag";
 import ProgressBar from "../components/ProgressBar";
-import PurchaseItem from "../components/PurchaseItem"; // PurchaseItem 컴포넌트 임포트
+import PurchaseItem from "../components/PurchaseItem";
 import NavigationBar from "../components/NavigationBar";
 
 const dummy = {
@@ -32,6 +32,14 @@ const purchaseHistoryData = [
     menuName: "콜라",
     price: 2000,
     tag: "부산 로컬 음식",
+  },
+  {
+    storeImage:
+      "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231102_102%2F1698913021884pJUJO_JPEG%2F20230815_232836.jpg",
+    storeName: "엄마횟집",
+    menuName: "회덮밥",
+    price: 12000,
+    tag: "전통 시장",
   },
   {
     storeImage:
@@ -111,6 +119,7 @@ const PurchaseList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-bottom: 60px;
 `;
 
 export default PurchaseHistory;
