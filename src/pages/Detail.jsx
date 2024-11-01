@@ -3,7 +3,8 @@ import styled from "styled-components";
 import { CategoryTag, MiniTag } from "../components/Tag";
 import { FaRegStar } from "react-icons/fa";
 import { MenuItem } from "../components/MenuItem";
-import { BottomButton } from "../components/BottomButton";
+import { BottomBtn } from "../components/BottomBtn";
+import { BackBtn } from "../components/BackBtn";
 import { useParams } from "react-router-dom";
 
 const dummy = {
@@ -63,6 +64,7 @@ const Detail = () => {
 
   return (
     <div>
+      <BackBtn />
       <TopImg />
       <InfoSection>
         <div>
@@ -82,7 +84,7 @@ const Detail = () => {
 
       <TabBar activeTab={activeTab} handleTabClick={handleTabClick} />
       {renderTabContent(activeTab)}
-      <BottomButton id={id}text="담기" />
+      <BottomBtn id={id} text="담기" />
     </div>
   );
 };
@@ -119,11 +121,11 @@ const renderTabContent = (activeTab) => {
 
 const MenuComponent = () => {
   return (
-    // return 문 추가
     <MenuContainer>
       {menuItems.map((item) => (
         <MenuItem
           key={item.id}
+          id={item.id}
           name={item.name}
           price={item.price}
           image={item.image}

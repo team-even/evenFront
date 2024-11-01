@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-export const BottomButton = ({ text, id }) => {
+export const BottomBtn = ({ text, id }) => {
   const navigate = useNavigate();
   return (
     <ButtonContainer
@@ -25,6 +25,7 @@ const ButtonContainer = styled.button`
   font-size: 20px;
   font-weight: 700;
   border: none;
+  z-index: 100;
   &:hover {
     background-color: #c2006e;
     transition: 0.2s ease-in-out;
