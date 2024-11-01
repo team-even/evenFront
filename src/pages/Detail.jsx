@@ -6,6 +6,7 @@ import { MenuItem } from "../components/MenuItem";
 import { BottomBtn } from "../components/BottomBtn";
 import { BackBtn } from "../components/BackBtn";
 import { useParams } from "react-router-dom";
+import useCartStore from "../stores/cartStore";
 
 const dummy = {
   img: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231102_102%2F1698913021884pJUJO_JPEG%2F20230815_232836.jpg",
@@ -57,24 +58,11 @@ const menuItems = [
 const Detail = () => {
   const { id } = useParams();
   const [activeTab, setActiveTab] = useState("menu");
-  const [cartItems, setCartItems] = useState([]);
+  const { addToCart } = useCartStore(); 
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
-
-  const addToCart = (item) => {
-    setCartItems((prevItems) => {
-      if (prevItems.find((cartItem) => cartItem.id === item.id)) {
-        // 이미 장바구니에 있는 경우 제거
-        return prevItems.filter((cartItem) => cartItem.id !== item.id);
-      } else {
-        // 장바구니에 없는 경우 추가
-        return [...prevItems, item];
-      }
-    });
-  };
-
   return (
     <div>
       <BackBtn />
@@ -143,14 +131,13 @@ const MenuComponent = ({ addToCart }) => {
           name={item.name}
           price={item.price}
           image={item.image}
-          addToCart={() => addToCart(item)} // addToCart 함수 호출
+          addToCart={() => addToCart(item)}
         />
       ))}
     </MenuContainer>
   );
 };
 
-// 스타일 컴포넌트들
 const TopImg = styled.div`
   width: 100%;
   height: 230px;

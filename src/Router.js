@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import { Payment } from "./pages/Payment";
 import MyPage from "./pages/MyPage";
 import Badge from "./pages/Badge";
 import HomePage from "./pages/HomePage";
@@ -9,12 +8,14 @@ import Ranking from "./components/Ranking";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import MarketList from "./pages/MarketList";
+import Cart from "./pages/Cart";
+import Payment from "./pages/Payment";
 export default function Router() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/detail/:id" element={<Detail />} />
-      <Route path="/detail/:id/payment" element={<Payment />} />
+      <Route path="/detail/:id/cart" element={<Cart />} />
       <Route path="/mypage" element={<MyPage />} />
       <Route path="/badge" element={<Badge />} />
       <Route path="/purchaseStatus" element={<PurchaseHistory />} />
@@ -22,6 +23,7 @@ export default function Router() {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/market-list" element={<MarketList />} />
+      <Route path="//detail/:id/payment" element={<Payment />} />
     </Routes>
   );
 }
