@@ -27,7 +27,6 @@ const generateDummyMarketData = (count) => {
     "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDAzMjVfNzEg%2FMDAxNzExMzc0MjUyMTEx.7A0xQ-TztyFayYki4pNgfllPQ_4QJNPWkQm4RbYaVb4g.MTWWKSVyjy0lRMxHZZXwG4g5Rr46IqOaQKJQZLVqzvAg.JPEG%2Foutput_2318168218.jpg&type=sc960_832", // 부경백반
     "https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20220713_173%2F16576817043000Ks2I_JPEG%2F58817538072243702_765385740.jpg&type=sc960_832", // 이븐한 스테이크
   ];
-  
   return Array.from({ length: count }, (_, index) => ({
     id: index + 1,
     name: marketNames[index],
