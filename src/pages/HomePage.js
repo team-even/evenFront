@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import NavigationBar from '../components/NavigationBar';
 import { SlMenu } from "react-icons/sl";
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 const SearchForm = styled.form`
   position: absolute;

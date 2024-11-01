@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"; // useEffect 추가
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.svg";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [memberId, setMemberId] = useState(null); // memberId 상태 추가
   const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
@@ -15,10 +16,45 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("로그인:", { email, password });
-  };
+
+    // 로그인 요청
+    try {
+        const response = await fetch('https://692d-14-44-120-102.ngrok-free.app/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'ngrok-skip-browser-warning': '69420', // ngrok 경고 무시
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+            }),
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log('서버로부터 받은 데이터:', data);
+
+            // 성공적인 로그인 시 홈 화면으로 이동
+            // 콜론(:)이 없는 키 이름을 사용
+            if (data["status:"] === "success") {
+                console.log("로그인 성공, 홈으로 이동합니다.");
+                navigate("/home");
+            } else {
+                console.error("로그인 실패:", data);
+                alert(data.message || "로그인에 실패했습니다. 다시 시도해 주세요.");
+            }
+        } else {
+            throw new Error('네트워크 응답이 올바르지 않습니다.');
+        }
+    } catch (error) {
+        console.error('로그인 중 오류 발생:', error);
+        alert("로그인 중 오류가 발생했습니다. 나중에 다시 시도해 주세요.");
+    }
+};
 
   const navigateToSignUp = () => {
     navigate("/signup");
@@ -60,7 +96,6 @@ const Login = () => {
 };
 
 const Container = styled.div`
-  margin: 100px 20px;
   justify-content: center;
   align-items: center;
   display: flex;

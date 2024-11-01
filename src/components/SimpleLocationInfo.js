@@ -9,40 +9,69 @@ const Container = styled.div`
     width: 100%;
     height: 170px;
     background-color: white;
-    padding: 16px;
     margin-bottom: 30px;
     transition: transform 0.3s ease;
     z-index: 1000;
 `;
 
-const Header = styled.h2`
-    font-size: 18px;
-    margin-bottom: 8px;
+const Section = styled.div`
+  margin: 10px 0;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 128px;
+  background-color: #ffffff;
 `;
 
-const Info = styled.p`
-    margin-bottom: 8px;
-    font-size: 16px;
+const Description = styled.div`
+  flex: 1;
+  text-align: start;
 `;
 
-const CloseButton = styled.button`
-    padding: 8px 12px;
-    background-color: #FF5F5F;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+const MarketName = styled.h4`
+  margin: 0;
+  font-size: 20px;
+`;
+
+const Tag = styled.span`
+  background-color: #E9ADC8;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin-left: 5px;
+`;
+
+const MiddleDiv = styled.div`
+  margin: 3px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
+const Distance = styled.h4``;
+
+const MarketImg = styled.div`
+  width: 80px;
+  height: 80px;
+  background-color: #eee; /* Placeholder for the image */
+  border-radius: 5px;
 `;
 
 const SimpleLocationInfo = ({ place, onClose }) => {
     return (
         <Container>
-          <>
-            <Header>선택된 장소</Header>
-            <Info>위도: {place.lat}</Info>
-            <Info>경도: {place.lng}</Info>
-            <CloseButton onClick={onClose}>닫기</CloseButton>
-          </>
+          <Section>
+            <Description>
+              <MarketName>{place.name}</MarketName>
+              <MiddleDiv>
+                다회용기
+                <Tag>{place.tag}</Tag>
+              </MiddleDiv>
+              <Distance>5m</Distance> {/* This can also be dynamic */}
+            </Description>
+            <MarketImg />
+          </Section>
         </Container>
     );
 };
