@@ -58,7 +58,12 @@ const MyMap = () => {
     };
 
     const handleMarkerPress = (place) => {
-        setSelectedPlace(place); // 클릭한 장소 정보 설정
+        // 현재 위치 마커를 클릭한 경우, selectedPlace를 null로 설정
+        if (place === currentPosition) {
+            setSelectedPlace(null);
+        } else {
+            setSelectedPlace(place); // 클릭한 장소 정보 설정
+        }
     };
 
     return (

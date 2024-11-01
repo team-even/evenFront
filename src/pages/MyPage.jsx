@@ -45,7 +45,7 @@ function MyPage() {
         }}
       >
         <Title>최근에 받은 배지에요!</Title>
-        <MoreLink onClick={handleMoreClick}>더보기 > </MoreLink>
+        <MoreLink onClick={handleMoreClick}>더보기 &gt</MoreLink>
       </div>
       <RecentBadges>
         <BadgeList>
