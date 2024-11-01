@@ -14,6 +14,7 @@ const NavBar = styled.nav`
   width: 100%;
   height: 65px;
   background-color: #ffffff;
+  z-index: 100;
 `
 
 const NavLink = styled(Link)`

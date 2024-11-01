@@ -35,6 +35,7 @@ body, html {
 
 /* 중앙에 배치할 컨테이너 설정 */
 .container {
+  position: relative;
   width: 390px;
   height: 100vh; /* 필요한 높이에 맞게 설정 가능 */
   min-height: 30rem;
