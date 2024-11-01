@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { CategoryTag } from "../components/Tag";
 import ProgressBar from "../components/ProgressBar";
-import PurchaseItem from "../components/PurchaseItem"; // PurchaseItem 컴포넌트 임포트
+import PurchaseItem from "../components/PurchaseItem";
 import NavigationBar from "../components/NavigationBar";
+import { fetchOrders } from "../apis/orderApi";
 
 const dummy = {
   img: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231102_102%2F1698913021884pJUJO_JPEG%2F20230815_232836.jpg",
@@ -41,10 +42,45 @@ const purchaseHistoryData = [
     price: 12000,
     tag: "전통 시장",
   },
+  {
+    storeImage:
+      "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231102_102%2F1698913021884pJUJO_JPEG%2F20230815_232836.jpg",
+    storeName: "엄마횟집",
+    menuName: "회덮밥",
+    price: 12000,
+    tag: "전통 시장",
+  },
 ];
 
 function PurchaseHistory() {
   const { menu, status } = dummy;
+  const [orders, setOrders] = useState([]);
+
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const response = await fetch('https://692d-14-44-120-102.ngrok-free.app/orders?memberId=1', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': '69420',
+        },
+        mode: 'cors'
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('서버로부터 받은 데이터:', data); 
+      } else {
+        throw new Error('네트워크 응답이 올바르지 않습니다.');
+      }
+    } catch (error) {
+      console.error('데이터 요청 중 오류 발생:', error); 
+    }
+  };
+
+  fetchData();
+}, []); 
 
   return (
     <Container>
@@ -111,6 +147,7 @@ const PurchaseList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-bottom: 60px;
 `;
 
 export default PurchaseHistory;

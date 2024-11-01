@@ -104,6 +104,7 @@ const MoreLink = styled.span`
   color: #4c4c4c;
   font-size: 16px;
   text-decoration: none;
+  cursor: pointer; // 클릭 가능한 요소임을 나타내기 위해 추가
 
   &:hover {
     color: #b300a4;
