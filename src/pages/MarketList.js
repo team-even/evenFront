@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { TbArrowBack } from "react-icons/tb";
 import MarketItem from "../components/MarketItem";
+<<<<<<< HEAD
 import NavigationBar from "../components/NavigationBar";
+=======
+>>>>>>> master
 import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
@@ -22,23 +25,23 @@ const Header = styled.div`
   left: 0;
   right: 0;
   z-index: 10;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   width: 390px; /* Container에 맞춤 */
   margin: 0 auto; /* 중앙 정렬 */
   padding: 15px 15px; /* 패딩 추가 */
-`
+`;
 
 const BackIcon = styled(TbArrowBack)`
   width: 30px;
   height: 30px;
-  cursor: pointer; 
+  cursor: pointer;
 `;
 
 const SearchForm = styled.form`
   display: flex;
   align-items: center;
   background: #ffffff;
-  border: 1px solid #AEAEAE;
+  border: 1px solid #aeaeae;
   border-radius: 5px;
   padding: 5px 15px;
   width: 90%;
@@ -92,7 +95,6 @@ const TabContent = styled.div`
   margin-bottom: 70px;
 `;
 
-
 const MarketList = () => {
   const [activeTab, setActiveTab] = useState("all"); // Initialize active tab state
   const navigate = useNavigate();
@@ -103,7 +105,7 @@ const MarketList = () => {
 
   const handleBackClick = () => {
     navigate(-1); // Navigate back
-  };
+  const navigate = useNavigate();
 
   return (
     <Container>
@@ -120,31 +122,36 @@ const MarketList = () => {
   );
 };
 
-// Render content based on the active tab
 const renderTabContent = (activeTab) => {
   switch (activeTab) {
     case "all":
       return (
         <TabContent>
-          {Array(7).fill().map((_, index) => (
-            <MarketItem key={index} />
-          ))}
+          {Array(7)
+            .fill()
+            .map((_, index) => (
+              <MarketItem key={index} />
+            ))}
         </TabContent>
       );
     case "local":
       return (
         <TabContent>
-          {Array(5).fill().map((_, index) => (
-            <MarketItem key={index} />
-          ))}
+          {Array(5)
+            .fill()
+            .map((_, index) => (
+              <MarketItem key={index} />
+            ))}
         </TabContent>
       );
     case "traditional":
       return (
         <TabContent>
-          {Array(5).fill().map((_, index) => (
-            <MarketItem key={index} />
-          ))}
+          {Array(5)
+            .fill()
+            .map((_, index) => (
+              <MarketItem key={index} />
+            ))}
         </TabContent>
       );
     default:
@@ -152,25 +159,29 @@ const renderTabContent = (activeTab) => {
   }
 };
 
-
-
-
 const TabBar = ({ activeTab, handleTabClick }) => {
   return (
     <TabBarContainer>
-      <TabItem active={activeTab === "all"} onClick={() => handleTabClick("all")}>
+      <TabItem
+        active={activeTab === "all"}
+        onClick={() => handleTabClick("all")}
+      >
         전체
       </TabItem>
-      <TabItem active={activeTab === "local"} onClick={() => handleTabClick("local")}>
+      <TabItem
+        active={activeTab === "local"}
+        onClick={() => handleTabClick("local")}
+      >
         로컬음식
       </TabItem>
-      <TabItem active={activeTab === "traditional"} onClick={() => handleTabClick("traditional")}>
+      <TabItem
+        active={activeTab === "traditional"}
+        onClick={() => handleTabClick("traditional")}
+      >
         전통시장
       </TabItem>
     </TabBarContainer>
   );
 };
-
-
 
 export default MarketList;

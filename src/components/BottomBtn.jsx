@@ -5,12 +5,16 @@ import styled from "styled-components";
 export const BottomBtn = ({ text, id, cartItemCount }) => {
   const navigate = useNavigate();
 
+  const handleClick = () => {
+    if (text === "결제하기") {
+      navigate(`/detail/${id}/payment`);
+    } else {
+      navigate(`/detail/${id}/cart`);
+    }
+  };
+
   return (
-    <ButtonContainer
-      onClick={() => {
-        navigate(`/detail/${id}/payment`);
-      }}
-    >
+    <ButtonContainer onClick={handleClick}>
       {cartItemCount > 0 ? `${cartItemCount}개 담음` : text}
     </ButtonContainer>
   );

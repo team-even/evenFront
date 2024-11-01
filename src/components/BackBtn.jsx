@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { FaAngleLeft } from "react-icons/fa";
-import { useNavigate } from "react-router-dom"; // useNavigate import
+import { useNavigate } from "react-router-dom";
 
 export const BackBtn = () => {
-  const navigate = useNavigate(); // useNavigate 훅 사용
+  const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate(-1); // 이전 페이지로 돌아가기
+    navigate(-1);
   };
 
   return (
@@ -26,8 +26,8 @@ const Wrapper = styled.div`
 `;
 
 const BtnContainer = styled.button`
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   background-color: #ffffff;
   border-radius: 100px;
   border: none;

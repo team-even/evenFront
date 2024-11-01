@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Section = styled.div`
   border: 1px solid #ddd;
@@ -12,6 +13,7 @@ const Section = styled.div`
   width: 100%;
   height: 128px;
   background-color: #ffffff;
+  cursor: pointer;
 `;
 
 const Description = styled.div`
@@ -25,7 +27,7 @@ const MarketName = styled.h4`
 `;
 
 const Tag = styled.span`
-  background-color: #E9ADC8;
+  background-color: #e9adc8;
   border-radius: 20px;
   padding: 5px 10px;
   margin-left: 5px;
@@ -36,22 +38,25 @@ const MiddleDiv = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-`
+`;
 
-const Distance = styled.h4`
-
-`
+const Distance = styled.h4``;
 
 const MarketImg = styled.div`
   width: 80px;
   height: 80px;
-  background-color: #eee; /* Placeholder for the image */
+  background-color: #eee;
   border-radius: 5px;
 `;
 
-function MarketItem() {
+function MarketItem({ id }) {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`/detail/${id || 1}`); // id가 없으면 1로 설정
+  };
+
   return (
-    <Section>
+    <Section onClick={handleClick}>
       <Description>
         <MarketName>다회용기</MarketName>
         <MiddleDiv>

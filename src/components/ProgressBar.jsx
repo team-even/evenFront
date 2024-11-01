@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const ProgressBar = ({
   currentStatus,
-  statuses = ["대기중", "진행중", "완료"],
+  statuses = ["대기중", "조리중", "완료"],
 }) => {
   return (
     <ProgressContainer>

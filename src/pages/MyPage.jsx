@@ -60,7 +60,7 @@ function MyPage() {
 }
 
 const Container = styled.div`
-  margin: 100px 20px;
+  margin: 70px 20px;
 `;
 const Welcome = styled.div`
   margin: 20px 0;

@@ -2,13 +2,23 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import addCart from "../assets/add_cart.svg";
 import deleteCart from "../assets/delete_cart.svg";
+import useCartStore from "../stores/cartStore"; // 스토어를 가져옵니다.
 
 export const MenuItem = ({ id, name, price, image }) => {
   const [isInCart, setIsInCart] = useState(false);
   const discountPrice = price * 0.9;
+  const addToCart = useCartStore((state) => state.addToCart); // 스토어에서 addToCart 함수를 가져옵니다.
+  const clearCart = useCartStore((state) => state.clearCart); // 스토어에서 clearCart 함수를 가져옵니다.
 
   const handleToggleCart = () => {
-    setIsInCart((prev) => !prev);
+    setIsInCart((prev) => {
+      if (!prev) {
+        addToCart({ id, name, price, image }); // 아이템 추가
+      } else {
+        clearCart(); // 아이템 제거 (여기서는 전체 장바구니 비우기)
+      }
+      return !prev; // 상태 토글
+    });
   };
 
   return (
