@@ -42,30 +42,30 @@ const MiddleDiv = styled.div`
 
 const Distance = styled.h4``;
 
-const MarketImg = styled.div`
+const MarketImg = styled.img`
   width: 80px;
   height: 80px;
   background-color: #eee;
   border-radius: 5px;
 `;
 
-function MarketItem({ id }) {
+function MarketItem({ id, name, tag, distance, image }) {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(`/detail/${id || 1}`); // id가 없으면 1로 설정
+    navigate(`/detail/${id || 1}`);
   };
 
   return (
     <Section onClick={handleClick}>
       <Description>
-        <MarketName>다회용기</MarketName>
+        <MarketName>{name}</MarketName>
         <MiddleDiv>
           다회용기
-          <Tag>지참</Tag>
+          <Tag>{tag}</Tag>
         </MiddleDiv>
-        <Distance>5m</Distance>
+        <Distance>{distance}</Distance>
       </Description>
-      <MarketImg />
+      <MarketImg src={image} alt={name}/>
     </Section>
   );
 }
