@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { CategoryTag, MiniTag } from "../components/Tag";
 import { FaRegStar } from "react-icons/fa";
 import { MenuItem } from "../components/MenuItem";
+import { BottomButton } from "../components/BottomButton";
+import { useParams } from "react-router-dom";
 
 const dummy = {
   img: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231102_102%2F1698913021884pJUJO_JPEG%2F20230815_232836.jpg",
@@ -52,6 +54,7 @@ const menuItems = [
 ];
 
 const Detail = () => {
+  const { id } = useParams();
   const [activeTab, setActiveTab] = useState("menu");
 
   const handleTabClick = (tab) => {
@@ -79,6 +82,7 @@ const Detail = () => {
 
       <TabBar activeTab={activeTab} handleTabClick={handleTabClick} />
       {renderTabContent(activeTab)}
+      <BottomButton id={id}text="담기" />
     </div>
   );
 };
