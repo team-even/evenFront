@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Payment = () => {
   const [useAmount, setUseAmount] = useState(3100);
+  const navigate = useNavigate();
 
   const totalPayment = 31000;
   const availableMoney = 5055;
@@ -62,7 +64,8 @@ const Payment = () => {
         </DetailRow>
       </Section>
 
-      <PaymentButton>결제하기</PaymentButton>
+      <PaymentButton onClick={()=>{ navigate("/purchaseStatus")
+      }}>결제하기</PaymentButton>
     </Container>
   );
 };
