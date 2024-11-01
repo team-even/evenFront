@@ -31,7 +31,7 @@ const Icon = styled.img`
 function NavigationBar() {
   return (
     <NavBar>
-      <NavLink to="/">
+      <NavLink to="/home">
         <Icon src={require("../assets/ic_home.png")} alt="홈" />
       </NavLink>
       <NavLink to="/purchaseStatus">
