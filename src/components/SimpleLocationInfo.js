@@ -51,7 +51,7 @@ const MiddleDiv = styled.div`
 
 const Distance = styled.h4``;
 
-const MarketImg = styled.div`
+const MarketImg = styled.img`
   width: 80px;
   height: 80px;
   background-color: #eee; /* Placeholder for the image */
@@ -70,7 +70,7 @@ const SimpleLocationInfo = ({ place, onClose }) => {
               </MiddleDiv>
               <Distance>5m</Distance> {/* This can also be dynamic */}
             </Description>
-            <MarketImg />
+            <MarketImg src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA1MDhfNDAg%2FMDAxNzE1MTU4NzY2Nzk0.HMLfO3hHbG4b8-BkV9VmnCZqHbAm88Cxx3IzL84Xt9Yg.J3ak6ooe1cssxvT4W-TyWH_QMRq3uri8duCUnN5HbQQg.JPEG%2FIMG_6701.JPG&type=sc960_832" alt="횟집"/>
           </Section>
         </Container>
     );
