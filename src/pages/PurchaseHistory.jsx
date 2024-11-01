@@ -4,7 +4,6 @@ import { CategoryTag } from "../components/Tag";
 import ProgressBar from "../components/ProgressBar";
 import PurchaseItem from "../components/PurchaseItem";
 import NavigationBar from "../components/NavigationBar";
-import { fetchOrders } from "../apis/orderApi";
 
 const dummy = {
   img: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231102_102%2F1698913021884pJUJO_JPEG%2F20230815_232836.jpg",

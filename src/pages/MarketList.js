@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { TbArrowBack } from "react-icons/tb";
 import MarketItem from "../components/MarketItem";
+import NavigationBar from "../components/NavigationBar";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -87,26 +89,33 @@ const TabContent = styled.div`
   margin-top: 130px;
   text-align: center;
   width: 100%;
+  margin-bottom: 70px;
 `;
 
 
 const MarketList = () => {
   const [activeTab, setActiveTab] = useState("all"); // Initialize active tab state
+  const navigate = useNavigate();
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
 
+  const handleBackClick = () => {
+    navigate(-1); // Navigate back
+  };
+
   return (
     <Container>
       <Header>
-        <BackIcon />
+        <BackIcon onClick={handleBackClick}/>
         <SearchForm>
           <SearchInput type="text" placeholder="매장명 검색" />
         </SearchForm>
       </Header>
       <TabBar activeTab={activeTab} handleTabClick={handleTabClick} />
       {renderTabContent(activeTab)} {/* Render content based on the active tab */}
+      <NavigationBar />
     </Container>
   );
 };

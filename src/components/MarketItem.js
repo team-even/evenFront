@@ -56,7 +56,7 @@ function MarketItem() {
         <MarketName>다회용기</MarketName>
         <MiddleDiv>
           다회용기
-          <Tag>신상품</Tag>
+          <Tag>지참</Tag>
         </MiddleDiv>
         <Distance>5m</Distance>
       </Description>
