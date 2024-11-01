@@ -30,7 +30,8 @@ body, html {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: #ffffff; /* 배경색 추가 (선택 사항) */
+  background-color: #ffffff;
+  font-family: 'Noto Sans Korean', sans-serif;  /* 배경색 추가 (선택 사항) */
 }
 
 /* 중앙에 배치할 컨테이너 설정 */
