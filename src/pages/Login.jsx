@@ -99,6 +99,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
+  margin-top: 100px;
 `;
 
 const FormContainer = styled.form`
