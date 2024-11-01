@@ -8,6 +8,7 @@ import PurchaseHistory from "./pages/PurchaseHistory";
 import Ranking from "./components/Ranking";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+
 export default function Router() {
   return (
     <Routes>
