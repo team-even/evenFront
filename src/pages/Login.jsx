@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-
+import logo from "../assets/logo.svg";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,8 +27,9 @@ const Login = () => {
   return (
     <Container>
       <FormContainer onSubmit={handleSubmit}>
+        <img src={logo} alt="logo" />
         <Title>🌱 안녕하세요!</Title>
-        <Subtitle>단팥과 함께 환경보호를 시작해요</Subtitle>
+        <Subtitle>용기모아과 함께 환경보호를 시작해요</Subtitle>
         <InputField>
           <Label htmlFor="email">이메일</Label>
           <Input
@@ -62,7 +63,6 @@ const Container = styled.div`
   margin: 100px 20px;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   display: flex;
 `;
 
@@ -74,8 +74,9 @@ const FormContainer = styled.form`
 
 const Title = styled.h2`
   text-align: center;
+  margin-top: 30px;
   margin-bottom: 10px;
-  color: #dd017c;
+  color: #555;
   font-weight: bold;
 `;
 

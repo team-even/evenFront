@@ -23,7 +23,7 @@ const menuItems = [
     name: "회덮밥",
     price: 12000,
     image:
-      "https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA4MjdfMjA3%2FMDAxNzI0NzY4NzY1Mzg5.YeQFEUXF0OcfgF81j34Fzbg-UfsWkWmzYWmeUQBsOzsg.fi_c71fDT-FFKVfyj9rxF4xFxOyvaHFp5r3JItkzjYYg.JPEG%2FA9FAB52F-B96C-40FC-9978-584AA5795F9D.jpeg%3Ftype%3Dw1500_60_sharpen",
+      "https://recipe1.ezmember.co.kr/cache/recipe/2018/01/05/e265c10cb43c35e0fa9b9b332a12905a1.jpg",
   },
   {
     id: 2,
