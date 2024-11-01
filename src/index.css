@@ -40,6 +40,7 @@ body, html {
   min-height: 30rem;
   background-color: #F5F5F5; /* 배경색 설정 (선택 사항) */
   overflow: hidden;
+  overflow-y: scroll;
 }
 
 
