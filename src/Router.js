@@ -4,6 +4,8 @@ import MyPage from "./pages/MyPage";
 import Badge from "./pages/Badge";
 import HomePage from "./pages/HomePage";
 import Detail from "./pages/Detail";
+import PurchaseHistory from "./pages/PurchaseHistory";
+import Ranking from "./components/Ranking";
 export default function Router() {
   return (
     <Routes>
@@ -12,6 +14,8 @@ export default function Router() {
       <Route path="/detail/:id/payment" element={<Payment />} />
       <Route path="/mypage" element={<MyPage />} />
       <Route path="/badge" element={<Badge />} />
+      <Route path="/purchaseStatus" element={<PurchaseHistory />} />
+      <Route path="/ranking" element={<Ranking />} />
     </Routes>
   );
 }

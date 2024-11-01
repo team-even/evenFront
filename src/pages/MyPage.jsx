@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import BadgeItem from "../components/BadgeItem";
+import NavigationBar from "../components/NavigationBar";
 
 const dummy = {
   nickname: "아영",
@@ -53,6 +54,7 @@ function MyPage() {
           ))}
         </BadgeList>
       </RecentBadges>
+      <NavigationBar />
     </Container>
   );
 }

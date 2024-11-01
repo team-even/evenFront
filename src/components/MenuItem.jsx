@@ -8,7 +8,7 @@ export const MenuItem = ({ id, name, price, image }) => {
   const discountPrice = price * 0.9;
 
   const handleToggleCart = () => {
-    setIsInCart((prev) => !prev); // Toggle isInCart state
+    setIsInCart((prev) => !prev);
   };
 
   return (
