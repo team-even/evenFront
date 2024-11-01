@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
-import { HomePage } from "./pages/HomePage";
-import Detail from "./pages/Detail";
 import { Payment } from "./pages/Payment";
 import MyPage from "./pages/MyPage";
 import Badge from "./pages/Badge";
+import HomePage from "./pages/HomePage";
+import Detail from "./pages/Detail";
 export default function Router() {
   return (
     <Routes>
