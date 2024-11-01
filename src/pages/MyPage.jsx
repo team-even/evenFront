@@ -33,9 +33,9 @@ function MyPage() {
         <span> 원</span>
       </Box>
       <Box>
-        <span>경험치</span>
-        <Number>250</Number>
-        <span> 점</span>
+        <span> 경험치</span>
+        <Number style={{ color: "#3ba55c" }}>🌱 220</Number>
+        <span style={{ color: "#3ba55c" }}> xp</span>
       </Box>
       <div
         style={{
@@ -54,20 +54,35 @@ function MyPage() {
           ))}
         </BadgeList>
       </RecentBadges>
+      <MenuItem>
+        <p> 결제 수단 관리</p>
+      </MenuItem>
+      <MenuItem>
+        <p> 정보 수정 </p>
+      </MenuItem>
+      <MenuItem>
+        <p> 고객센터 </p>
+      </MenuItem>
       <NavigationBar />
     </Container>
   );
 }
 
+const MenuItem = styled.div`
+  /* background-color: white; */
+  padding: 20px;
+  margin-top: 10px;
+  border-bottom: 1px solid #c0c0c0;
+`;
 const Container = styled.div`
-  margin: 70px 20px;
+  margin: 50px 20px;
 `;
 const Welcome = styled.div`
   margin: 20px 0;
 `;
 
 const Title = styled.h2`
-  margin-top: 10px;
+  margin-top: 20px;
 `;
 const Box = styled.div`
   background-color: white;

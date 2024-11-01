@@ -6,7 +6,7 @@ import RankingItem from "../components/RankingItem";
 const Section = styled.div`
   padding-top: 100px; /* 고정된 Title 영역만큼의 여백 */
   margin: 125px 0 85px;
-  padding: 0 8px;
+  padding: 0 20px;
 `;
 
 const FixedHeader = styled.div`
@@ -22,11 +22,12 @@ const FixedHeader = styled.div`
 `;
 
 const Title = styled.h1`
-  margin: 0;
+  margin-left: 10px;
 `;
 
 const SubTitle = styled.h4`
-  margin: 0;
+  margin-left: 10px;
+  font-weight: 500;
 `;
 
 const rankingData = [
@@ -46,7 +47,7 @@ function Ranking() {
   return (
     <>
       <FixedHeader>
-        <Title>랭킹</Title>
+        <Title>랭킹🏆</Title>
         <SubTitle>환경 보호 경험치가 상승 중! <br/>
         다회용기 사용으로 얻은 성장을 확인해 보세요!</SubTitle>
       </FixedHeader>
