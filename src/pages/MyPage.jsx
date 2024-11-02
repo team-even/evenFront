@@ -7,10 +7,27 @@ import NavigationBar from "../components/NavigationBar";
 const dummy = {
   nickname: "아영",
   badges: [
-    { name: "채식 식단 누적 3회 섭취", icon: "🌱" },
-    { name: "전통시장 누적 3회 방문", icon: "🛒" },
-    { name: "다회용기 누적 5회 사용", icon: "♻️" },
-    { name: "부산로컬음식 누적 3회 방문", icon: "🍲" },
+    {
+      name: "채식 초보",
+      icon: "🌱",
+      description: "기본적인 채식 식단을 따라해 보세요!",
+    },
+    { name: "시장 탐방", icon: "🛒", description: "전통시장에서의 구매 경험!" },
+    {
+      name: "활용왕",
+      icon: "♻️",
+      description: "3회 이상 다회용기로 포장해 보세요!",
+    },
+    {
+      name: "다회용기 사용자",
+      icon: "♻️",
+      description: "5회 사용하여 환경 보호에 기여!",
+    },
+    {
+      name: "부산 미식가",
+      icon: "🍲",
+      description: "부산의 맛을 경험해 보세요!",
+    },
   ],
 };
 
@@ -111,7 +128,7 @@ const RecentBadges = styled.div`
 const BadgeList = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 4px;
   padding-right: 10px;
 `;
 
@@ -122,7 +139,7 @@ const MoreLink = styled.span`
   cursor: pointer; // 클릭 가능한 요소임을 나타내기 위해 추가
 
   &:hover {
-    color: #b300a4;
+    font-weight: 800;
   }
 `;
 

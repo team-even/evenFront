@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useCartStore from "../stores/cartStore";
 import styled from "styled-components";
 import BackBtn from "../components/BackBtn";
-import {BottomBtn} from "../components/BottomBtn";
+import { BottomBtn } from "../components/BottomBtn";
 
 const Cart = () => {
   const { cartItems, increaseQuantity, decreaseQuantity, clearCart } =
@@ -24,7 +24,7 @@ const Cart = () => {
   return (
     <div style={{ margin: "70px 0" }}>
       <BackBtn onClick={handleBack} />
-      <h2 style={{marginLeft:'20px', marginBottom:'20px'}}>구매 목록</h2>
+      <h2 style={{ marginLeft: "20px", marginBottom: "20px" }}>구매 목록</h2>
       {cartItems.length === 0 ? (
         <p>비어 있습니다.</p>
       ) : (

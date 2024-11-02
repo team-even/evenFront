@@ -8,7 +8,7 @@ const Section = styled.div`
   width: 100%;
   height: 90px;
   border-radius: 20px;
-  background-color: #ffffff;
+  background-color: ${({ isMine }) => (isMine ? "#e0ffe0" : "#ffffff")};
   padding: 0 20px;
 `;
 
@@ -29,9 +29,9 @@ const ExperienceValue = styled.h4`
   color: #3ba55c;
 `;
 
-function RankingItem({ number, name, subName, experienceValue }) {
+function RankingItem({ number, name, subName, experienceValue, isMine }) {
   return (
-    <Section>
+    <Section isMine={isMine}>
       <Number>{number}</Number>
       <Name>{name}</Name>
       <SubName>{subName}</SubName>
